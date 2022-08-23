@@ -133,12 +133,9 @@
                             @csrf
                         </form>
                         <div class="dropdown-divider"></div>
-                        <a href="{{url('panel/edit-profile')}}" class="dropdown-item">
+                        <a href="{{url('/home/edit-profile')}}" class="dropdown-item">
                             <i class="fas fa-cog mr-2"></i> Edit Akun
                         </a>
-
-                        {{-- <div class="dropdown-divider"></div> --}}
-                        {{-- <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a> --}}
                     </div>
                 </li>
                 <!-- <li class="nav-item">
@@ -149,10 +146,10 @@
             </ul>
         </nav>
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <a href="../../index3.html" class="brand-link">
+            <a href="{{url('/home')}}" class="brand-link">
                 <img src="{{asset('assets/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
+                <span class="brand-text font-weight-light">B'Laravel 8</span>
             </a>
 
             <div class="sidebar">
@@ -162,7 +159,7 @@
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="#" class="d-block">{{ Auth::user()->name }}</a>
                     </div>
                 </div>
 

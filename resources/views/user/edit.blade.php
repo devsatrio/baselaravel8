@@ -57,7 +57,7 @@
                                         <input type="email" class="form-control" value="{{$row->email}}" name="email" required>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Level</label>
                                         <select name="level" class="form-control">
@@ -65,12 +65,6 @@
                                             <option value="{{$row_roles->id}}-{{$row_roles->name}}" @if($row_roles->id==$row->level) selected @endif>{{$row_roles->name}}</option>
                                             @endforeach
                                         </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Nip Khanza</label>
-                                        <input type="text" class="form-control" name="nip_khanza" value="{{$row->nip_khanza}}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">

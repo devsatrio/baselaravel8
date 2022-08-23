@@ -13,10 +13,10 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        // $this->middleware('permission:view-users', ['only' => ['index','show','listdata']]);
-        // $this->middleware('permission:create-users', ['only' => ['create']]);
-        // $this->middleware('permission:edit-users', ['only' => ['edit']]);
-        // $this->middleware('permission:delete-users', ['only' => ['destroy']]);
+        $this->middleware('permission:view-users', ['only' => ['index','show','listdata']]);
+        $this->middleware('permission:create-users', ['only' => ['create']]);
+        $this->middleware('permission:edit-users', ['only' => ['edit']]);
+        $this->middleware('permission:delete-users', ['only' => ['destroy']]);
     }
 
     //=================================================================
@@ -50,7 +50,6 @@ class UserController extends Controller
             'username'=>$request->username,
             'email'=>$request->email,
             'level'=>$newlevel[0],
-            'nip_khanza'=>$request->nip_khanza,
             'password'=>Hash::make($request->userpassword),
         ]);
         $usr->assignRole($newlevel[1]);
@@ -75,6 +74,7 @@ class UserController extends Controller
     //=================================================================
     public function update(Request $request, $id)
     {
+        DB::table('model_has_roles')->where('model_id',$id)->delete();
         $newlevel = explode('-',$request->level);
         if($request->userpassword!=''){
             $usr = User::where('id',$id)
@@ -83,7 +83,6 @@ class UserController extends Controller
                 'username'=>$request->username,
                 'email'=>$request->email,
                 'level'=>$newlevel[0],
-                'nip_khanza'=>$request->nip_khanza,
                 'password'=>Hash::make($request->userpassword),
             ]);
             $usr = User::find($id);
@@ -95,7 +94,6 @@ class UserController extends Controller
                 'username'=>$request->username,
                 'email'=>$request->email,
                 'level'=>$newlevel[0],
-                'nip_khanza'=>$request->nip_khanza,
             ]);
             $usr = User::find($id);
             $usr->assignRole($newlevel[1]);

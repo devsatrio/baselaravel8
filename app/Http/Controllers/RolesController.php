@@ -14,10 +14,10 @@ class RolesController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        // $this->middleware('permission:view-roles', ['only' => ['index','show','listdata']]);
-        // $this->middleware('permission:create-roles', ['only' => ['create']]);
-        // $this->middleware('permission:edit-roles', ['only' => ['edit']]);
-        // $this->middleware('permission:delete-roles', ['only' => ['destroy']]);
+        $this->middleware('permission:view-roles', ['only' => ['index','show','listdata']]);
+        $this->middleware('permission:create-roles', ['only' => ['create']]);
+        $this->middleware('permission:edit-roles', ['only' => ['edit']]);
+        $this->middleware('permission:delete-roles', ['only' => ['destroy']]);
     }
 
     //=================================================================

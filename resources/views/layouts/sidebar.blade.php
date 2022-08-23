@@ -1,8 +1,8 @@
 <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <!-- <li class="nav-item has-treeview">
+        <!-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -256,42 +256,70 @@
               </p>
             </a>
           </li> -->
-          <li class="nav-item">
+        <li class="nav-item">
             <a href="{{url('/home')}}" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-              </p>
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                    Dashboard
+                </p>
             </a>
-          </li>
-          <li class="nav-item has-treeview">
+        </li>
+        @if(auth()->user()->can('view-users')
+        || auth()->user()->can('create-users')
+        || auth()->user()->can('edit-users')
+        || auth()->user()->can('delete-users')
+        || auth()->user()->can('view-roles')
+        || auth()->user()->can('create-roles')
+        || auth()->user()->can('edit-roles')
+        || auth()->user()->can('delete-roles')
+        || auth()->user()->can('view-permission')
+        || auth()->user()->can('create-permission')
+        || auth()->user()->can('edit-permission')
+        || auth()->user()->can('delete-permission'))
+        <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                User Management
-                <i class="fas fa-angle-left right"></i>
-              </p>
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                    User Management
+                    <i class="fas fa-angle-left right"></i>
+                </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{url('permission')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Permission</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{url('roles')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Roles</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{url('users')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Users</p>
-                </a>
-              </li>
+                @if(auth()->user()->can('view-permission')
+                || auth()->user()->can('create-permission')
+                || auth()->user()->can('edit-permission')
+                || auth()->user()->can('delete-permission'))
+                <li class="nav-item">
+                    <a href="{{url('permission')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Permission</p>
+                    </a>
+                </li>
+                @endif
+                @if(auth()->user()->can('view-roles')
+                || auth()->user()->can('create-roles')
+                || auth()->user()->can('edit-roles')
+                || auth()->user()->can('delete-roles'))
+                <li class="nav-item">
+                    <a href="{{url('roles')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Roles</p>
+                    </a>
+                </li>
+                @endif
+                @if(auth()->user()->can('view-users')
+                || auth()->user()->can('create-users')
+                || auth()->user()->can('edit-users')
+                || auth()->user()->can('delete-users'))
+                <li class="nav-item">
+                    <a href="{{url('users')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Users</p>
+                    </a>
+                </li>
+                @endif
             </ul>
-          </li>
-        </ul>
-      </nav>
+        </li>
+        @endif
+    </ul>
+</nav>

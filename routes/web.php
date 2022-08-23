@@ -17,6 +17,8 @@ Auth::routes([
 
 //===========================================================================================Home
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home/edit-profile', [App\Http\Controllers\HomeController::class, 'editprofile']);
+Route::post('/home/edit-profile', [App\Http\Controllers\HomeController::class, 'aksieditprofile']);
 
 //===========================================================================================Users
 Route::get('/list-data-users',[UserController::class,'listdata']);
