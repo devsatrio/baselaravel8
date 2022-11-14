@@ -1,80 +1,61 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="content-wrapper">
-    @if (session('status'))
-    <div class="col-lg-12 mt-2">
-        <div class="alert alert-success alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <h4>Info!</h4>
-            {{ session('status') }}
-        </div>
-    </div>
-    @endif
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-12">
-                    <h1>Dashboard Page</h1>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
+@section('template_title')
+    Dashboard Page
+@endsection
 
-    <!-- Main content -->
+@section('content')
     <section class="content">
         <div class="container-fluid">
             <div class="row">
+                @if (session('status'))
+                    <div class="col-lg-12 mt-2">
+                        <div class="alert alert-success alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <h4>Info!</h4>
+                            {{ session('status') }}
+                        </div>
+                    </div>
+                @endif
                 <div class="col-12">
-                    <!-- Default box -->
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Title</h3>
+                            <h3 class="card-title">How To Use Simple CRUD Maker With This Boiler</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"
                                     data-toggle="tooltip" title="Collapse">
                                     <i class="fas fa-minus"></i></button>
-                                <button type="button" class="btn btn-tool" data-card-widget="remove"
-                                    data-toggle="tooltip" title="Remove">
+                                <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip"
+                                    title="Remove">
                                     <i class="fas fa-times"></i></button>
                             </div>
                         </div>
                         <div class="card-body">
-                            Start creating your amazing application!
+                            <ol>
+                                <li>Create table first, for example <b>book</b></li>
+                                <li>type <code>php artisan make:crud {table_name}</code> for example <code>php artisan
+                                        make:crud book</code></li>
+                                <li>by default your route will be plural name from your table, so if my table was book the
+                                    route is <b>books</b></li>
+                                <li>or you can custom route name by typing <code>php artisan make:crud {table_name}
+                                        --route={route_name}</code> for example <code>php artisan make:crud book
+                                        --route=book_crud</code>, that code will be change the default route</li>
+                                <li>adding route to your <code>web.php</code> for example <code>Route::resource('book_crud',
+                                        BukuController::class);</code></li>
+                                <li>Finaly adding menu link on <code>sidebar.php</code> for our new crud</li>
+                                <blockquote class="quote-secondary">
+                                    <p>if timestamp error when create or editing data adding this code to model <code>public
+                                            $timestamps = false;</code></p>
+                                    <p>if model table name error or not same with table name type this in model
+                                        <code>protected $table = 'table_name';</code> for example <code>protected $table =
+                                            'book';</code></p>
+                                </blockquote>
+                            </ol>
                         </div>
-                        <!-- /.card-body -->
-                        <div class="card-footer">
-                            Footer
-                        </div>
-                        <!-- /.card-footer-->
                     </div>
-                    <!-- /.card -->
                 </div>
             </div>
         </div>
     </section>
-    <!-- /.content -->
-</div>
-
-<!-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
 @endsection

@@ -4,13 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\BukuController;
+use App\Http\Controllers\RakbukuController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes([
-'register' => false,
+'register' => true,
 'reset' => false,
 'verify' => false,
 ]);
