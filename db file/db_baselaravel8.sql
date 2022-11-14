@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 23, 2022 at 12:33 PM
+-- Generation Time: Nov 14, 2022 at 01:27 PM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -88,7 +88,7 @@ CREATE TABLE `model_has_roles` (
 --
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
-(1, 'App\\Models\\User', 2);
+(1, 'App\\Models\\User', 4);
 
 -- --------------------------------------------------------
 
@@ -111,6 +111,7 @@ CREATE TABLE `password_resets` (
 CREATE TABLE `permissions` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `permission_grub` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -120,19 +121,20 @@ CREATE TABLE `permissions` (
 -- Dumping data for table `permissions`
 --
 
-INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-(1, 'view-users', 'web', NULL, NULL),
-(2, 'create-users', 'web', NULL, NULL),
-(3, 'edit-users', 'web', NULL, NULL),
-(4, 'delete-users', 'web', NULL, NULL),
-(5, 'view-roles', 'web', NULL, NULL),
-(6, 'create-roles', 'web', NULL, NULL),
-(7, 'edit-roles', 'web', NULL, NULL),
-(9, 'delete-roles', 'web', NULL, NULL),
-(10, 'view-permission', 'web', NULL, NULL),
-(11, 'create-permission', 'web', NULL, NULL),
-(12, 'edit-permission', 'web', NULL, NULL),
-(13, 'delete-permission', 'web', NULL, NULL);
+INSERT INTO `permissions` (`id`, `name`, `permission_grub`, `guard_name`, `created_at`, `updated_at`) VALUES
+(1, 'view-users', 'users', 'web', NULL, NULL),
+(2, 'create-users', 'users', 'web', NULL, NULL),
+(3, 'edit-users', 'users', 'web', NULL, NULL),
+(4, 'delete-users', 'users', 'web', NULL, NULL),
+(5, 'view-roles', 'roles', 'web', NULL, NULL),
+(6, 'create-roles', 'roles', 'web', NULL, NULL),
+(7, 'edit-roles', 'roles', 'web', NULL, NULL),
+(9, 'delete-roles', 'roles', 'web', NULL, NULL),
+(10, 'view-permission', 'permission', 'web', NULL, NULL),
+(11, 'create-permission', 'permission', 'web', NULL, NULL),
+(12, 'edit-permission', 'permission', 'web', NULL, NULL),
+(13, 'delete-permission', 'permission', 'web', NULL, NULL),
+(15, 'asdf', 'asdf', 'web', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -183,11 +185,13 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (4, 1),
 (4, 2),
 (5, 1),
+(5, 2),
 (5, 3),
 (6, 1),
 (7, 1),
 (9, 1),
 (10, 1),
+(10, 2),
 (10, 3),
 (11, 1),
 (12, 1),
@@ -217,7 +221,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `level`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'Moch deva satrio damara', 'devasatrio', '1', 'devasatrio@gmail.com', NULL, '$2y$10$NaJFJi2Im8Q4P.EXwy3CWeKh0neTB/AXzk2s2GRyVpA2wh4OtPLNO', NULL, '2022-08-22 03:50:56', '2022-08-23 01:28:04');
+(4, 'superadmin', 'superadmin', '1', 'superadmin@test.id', NULL, '$2y$10$nXc3.CJunLIPF/MjcTQMaOYwBeTIPzG4adY/H187mgUPDSmCmlOQa', NULL, '2022-11-14 04:46:25', '2022-11-14 04:46:37');
 
 --
 -- Indexes for dumped tables
@@ -304,7 +308,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -316,7 +320,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

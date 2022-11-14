@@ -10,7 +10,7 @@
 1. Clone Project
 2. Install Composer
 3. Generate Key
-4. You can use .sql file in project
+4. You can use .sql file in folder "db file"
 5. Some time, if the role & permission not working you can clear the cache of laravel by typing 
 	>php artisan cache:clear
 	
