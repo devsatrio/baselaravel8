@@ -12,8 +12,8 @@ class PermissionController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('permission:view-permission', ['only' => ['index','show','listdata']]);
-        $this->middleware('permission:create-permission', ['only' => ['create']]);
-        $this->middleware('permission:edit-permission', ['only' => ['edit']]);
+        $this->middleware('permission:create-permission', ['only' => ['create','store']]);
+        $this->middleware('permission:edit-permission', ['only' => ['edit','update']]);
         $this->middleware('permission:delete-permission', ['only' => ['destroy']]);
     }
     //=================================================================
@@ -33,6 +33,7 @@ class PermissionController extends Controller
         DB::table('permissions')
         ->insert([
             'name'=>$request->permission,
+            'permission_grub'=>$request->permission_grub,
             'guard_name'=>'web'
         ]);
         return redirect('/permission');
@@ -58,6 +59,7 @@ class PermissionController extends Controller
         ->where('id',$id)
         ->update([
             'name'=>$request->permission,
+            'permission_grub'=>$request->permission_grub,
         ]);
         return redirect('/permission');
     }

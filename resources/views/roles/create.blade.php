@@ -37,16 +37,32 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label for="exampleInputEmail1">Pilih Permission</label>
+                                        <hr>
                                     </div>
                                     @foreach ($data_permission as $row_data_permission)
                                         <div class="col-md-3">
-                                            <div class="form-group">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" type="checkbox" name="permission[]"
-                                                        id="customCheckbox{{ $row_data_permission->id }}"
-                                                        value="{{ $row_data_permission->id }}">
-                                                    <label for="customCheckbox{{ $row_data_permission->id }}"
-                                                        class="custom-control-label">{{ $row_data_permission->name }}</label>
+                                            <div class="card card-secondary">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">{{ $row_data_permission->permission_grub }}</h3>
+                                                </div>
+                                                <div class="card-body">
+                                                    @php
+                                                        $data_detail_permission = DB::table('permissions')
+                                                            ->where('permission_grub', $row_data_permission->permission_grub)
+                                                            ->get();
+                                                    @endphp
+                                                    @foreach ($data_detail_permission as $row_detail_permission)
+                                                        <div class="form-group">
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input class="custom-control-input" type="checkbox"
+                                                                    name="permission[]"
+                                                                    id="customCheckbox{{ $row_detail_permission->id }}"
+                                                                    value="{{ $row_detail_permission->id }}">
+                                                                <label for="customCheckbox{{ $row_detail_permission->id }}"
+                                                                    class="custom-control-label">{{ $row_detail_permission->name }}</label>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </div>

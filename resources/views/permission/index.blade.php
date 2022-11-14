@@ -44,6 +44,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Permission Name</th>
+                                            <th>Permission Grub</th>
                                             <th class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
@@ -54,6 +55,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Permission Name</th>
+                                            <th>Permission Grub</th>
                                             <th class="text-center">Aksi</th>
                                         </tr>
                                     </tfoot>
@@ -78,6 +80,10 @@
                             <label for="exampleInputEmail1">Permission</label>
                             <input type="text" class="form-control" name="permission" required>
                         </div>
+                        <div class="form-group">
+                            <label>Permission Grub</label>
+                            <input type="text" class="form-control" name="permission_grub">
+                        </div>
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -100,6 +106,10 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">Permission</label>
                             <input type="text" class="form-control" name="permission" id="permission" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Permission Grub</label>
+                            <input type="text" class="form-control" name="permission_grub" id="permission_grub">
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">

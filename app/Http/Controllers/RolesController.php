@@ -15,8 +15,8 @@ class RolesController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('permission:view-roles', ['only' => ['index','show','listdata']]);
-        $this->middleware('permission:create-roles', ['only' => ['create']]);
-        $this->middleware('permission:edit-roles', ['only' => ['edit']]);
+        $this->middleware('permission:create-roles', ['only' => ['create','store']]);
+        $this->middleware('permission:edit-roles', ['only' => ['edit','update']]);
         $this->middleware('permission:delete-roles', ['only' => ['destroy']]);
     }
 
@@ -39,7 +39,7 @@ class RolesController extends Controller
     //=================================================================
     public function create()
     {
-        $data_permission = DB::table('permissions')->orderby('id','desc')->get();
+        $data_permission = DB::table('permissions')->groupby('permission_grub')->get();
         return view('roles.create',compact('data_permission'));
     }
 
@@ -61,7 +61,7 @@ class RolesController extends Controller
     public function edit($id)
     {
         $role = Role::find($id);
-        $permission = Permission::get();
+        $permission = DB::table('permissions')->groupby('permission_grub')->get();
         $rolePermissions = DB::table('role_has_permissions')->where('role_id',$id)->get();
         return view('roles.edit',compact('role','permission','rolePermissions'));
     }

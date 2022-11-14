@@ -17,8 +17,8 @@
 	>php artisan config:cache
 
 Super admin account
-user : devasatrio
-pass : devasatrio
+user : superadmin
+pass : superadmin
 
 ### Issues
 If you come across any issues please  [report them here](https://github.com/devsatrio/dboilerlaravel/issues)

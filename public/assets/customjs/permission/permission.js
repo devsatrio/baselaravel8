@@ -12,6 +12,7 @@ $(function () {
                 }
             },
             { data: 'name', name: 'name' },
+            { data: 'permission_grub', name: 'permission_grub' },
             {
                 render: function (data, type, row) {
                         return '<button type="button" onclick="editdata(' + row['id'] + ')" class="btn btn-success"><i class="fa fa-wrench"></i></button> <button class="btn btn-danger" onclick="hapusdata(' + row['id'] + ')"><i class="fa fa-trash"></i></button>'
@@ -36,6 +37,7 @@ function editdata(kode) {
             $.each(data, function (key, value) {
                 $('#editform').attr('action', '/permission/' + value.id);
                 $('#permission').val(value.name);
+                $('#permission_grub').val(value.permission_grub);
             });
             $('#modal-edit').modal('show');
         }, complete: function () {
