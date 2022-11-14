@@ -3,6 +3,7 @@
 - Admin panel
 - Simple user management for admin
 - Simple Role & Permission
+- Simple CRUD Generator
 - Datatables serverside
 - Remember login
 
