@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2022 at 01:27 PM
+-- Generation Time: Nov 15, 2022 at 07:45 AM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -134,7 +134,7 @@ INSERT INTO `permissions` (`id`, `name`, `permission_grub`, `guard_name`, `creat
 (11, 'create-permission', 'permission', 'web', NULL, NULL),
 (12, 'edit-permission', 'permission', 'web', NULL, NULL),
 (13, 'delete-permission', 'permission', 'web', NULL, NULL),
-(15, 'asdf', 'asdf', 'web', NULL, NULL);
+(17, 'setting-web', 'other', 'web', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -195,7 +195,32 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (10, 3),
 (11, 1),
 (12, 1),
-(13, 1);
+(13, 1),
+(17, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `setting_web`
+--
+
+CREATE TABLE `setting_web` (
+  `id` int(11) NOT NULL,
+  `app_name` varchar(400) DEFAULT NULL,
+  `app_alias` varchar(400) DEFAULT NULL,
+  `app_logo` text DEFAULT NULL,
+  `sidebar_type` varchar(200) DEFAULT NULL,
+  `navbar_type` varchar(200) DEFAULT NULL,
+  `navbar_color` varchar(200) DEFAULT NULL,
+  `logo_bg_color` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `setting_web`
+--
+
+INSERT INTO `setting_web` (`id`, `app_name`, `app_alias`, `app_logo`, `sidebar_type`, `navbar_type`, `navbar_color`, `logo_bg_color`) VALUES
+(1, 'edit', 'edit', '1668493259-laravel.png', 'dark', 'dark', 'indigo', 'dark');
 
 -- --------------------------------------------------------
 
@@ -282,6 +307,12 @@ ALTER TABLE `role_has_permissions`
   ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
 
 --
+-- Indexes for table `setting_web`
+--
+ALTER TABLE `setting_web`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -308,13 +339,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `setting_web`
+--
+ALTER TABLE `setting_web`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`

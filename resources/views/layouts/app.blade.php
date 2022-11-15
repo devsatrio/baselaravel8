@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
 
+@php
+$data_setting_web = DB::table('setting_web')->orderby('id','desc')->limit(1)->get();
+@endphp
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Base Laravel 8</title>
+    <title>@foreach($data_setting_web as $row_data_setting_web) {{$row_data_setting_web->app_alias}} @endforeach</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
@@ -13,10 +16,9 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     @stack('cs_in')
 </head>
-
 <body class="hold-transition sidebar-mini sidebar-collapse">
     <div class="wrapper">
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <nav class="main-header navbar navbar-expand @foreach($data_setting_web as $row_data_setting_web) navbar-{{$row_data_setting_web->navbar_color}} @endforeach @foreach($data_setting_web as $row_data_setting_web) navbar-{{$row_data_setting_web->navbar_type}} @endforeach">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
@@ -47,11 +49,12 @@
                 </li>
             </ul>
         </nav>
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <a href="{{ url('/home') }}" class="brand-link">
-                <img src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">B'Laravel 8</span>
+        <aside class="main-sidebar @foreach($data_setting_web as $row_data_setting_web) sidebar-{{$row_data_setting_web->sidebar_type}}-primary @endforeach elevation-4">
+            <a href="{{ url('/home') }}" class="brand-link @foreach($data_setting_web as $row_data_setting_web) navbar-{{$row_data_setting_web->logo_bg_color}} @endforeach">
+                @foreach($data_setting_web as $row_data_setting_web) <img src="{{ asset('images/setting/'.$row_data_setting_web->app_logo) }}" alt="brand Logo"
+                class="brand-image img-circle elevation-3" style="opacity: .8"> @endforeach
+                
+                <span class="brand-text font-weight-light">@foreach($data_setting_web as $row_data_setting_web) {{$row_data_setting_web->app_name}} @endforeach</span>
             </a>
 
             <div class="sidebar">

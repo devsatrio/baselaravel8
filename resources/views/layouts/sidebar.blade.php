@@ -65,7 +65,14 @@
                 </ul>
             </li>
         @endif
-
+        <li class="nav-item">
+            <a href="{{ url('/setting-web') }}" class="nav-link">
+                <i class="nav-icon fas fa-cog"></i>
+                <p>
+                    Setting Web
+                </p>
+            </a>
+        </li>
         {{-- Example Drop Down Menu <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-chart-pie"></i>

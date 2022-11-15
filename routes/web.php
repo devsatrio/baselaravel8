@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\SettingWebController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,3 +32,7 @@ Route::resource('roles', RolesController::class);
 //===========================================================================================Permission
 Route::get('/list-data-permission',[PermissionController::class,'listdata']);
 Route::resource('permission', PermissionController::class);
+
+//===========================================================================================Setting-Web
+Route::get('/setting-web',[SettingWebController::class,'index']);
+Route::post('/setting-web',[SettingWebController::class,'store']);
