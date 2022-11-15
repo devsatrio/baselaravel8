@@ -26,7 +26,7 @@ return [
     |            view-field.stub
     */
 
-    'stub_path' => 'default',
+    'stub_path' => resource_path('/views/vendor/stubs/'),
 
     /*
     |--------------------------------------------------------------------------
