@@ -54,7 +54,7 @@ $data_setting_web = DB::table('setting_web')->orderby('id','desc')->limit(1)->ge
                 @foreach($data_setting_web as $row_data_setting_web) <img src="{{ asset('images/setting/'.$row_data_setting_web->app_logo) }}" alt="brand Logo"
                 class="brand-image img-circle elevation-3" style="opacity: .8"> @endforeach
                 
-                <span class="brand-text font-weight-light">@foreach($data_setting_web as $row_data_setting_web) {{$row_data_setting_web->app_name}} @endforeach</span>
+                <span class="brand-text font-weight-light @foreach($data_setting_web as $row_data_setting_web) text-{{$row_data_setting_web->brand_type}} @endforeach">@foreach($data_setting_web as $row_data_setting_web) {{$row_data_setting_web->app_name}} @endforeach</span>
             </a>
 
             <div class="sidebar">

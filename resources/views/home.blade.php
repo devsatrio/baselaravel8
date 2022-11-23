@@ -42,6 +42,9 @@
                                         <code>protected $table = 'table_name';</code> for example <code>protected $table =
                                             'book';</code>
                                     </p>
+                                    <p>
+                                        You can edit file <b>.stub</b> in <b>"views/vendor/stubs"</b> folder to customize the crud generator view, model & controller
+                                    </p>
                                 </blockquote>
                                 <span>More information for crud generator is <a href="https://github.com/awais-vteams/laravel-crud-generator" target="blank()">Here</a></span>
                             </ol>
