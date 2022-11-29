@@ -164,6 +164,17 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label for="exampleInputEmail1">Brand Text Type</label>
+                                                <select name="brand_type" class="form-control">
+                                                    <option value="dark"
+                                                        @if ($row->brand_type == 'dark') selected @endif>dark</option>
+                                                    <option value="light"
+                                                        @if ($row->brand_type == 'light') selected @endif>light</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
                                                 <label for="exampleInputEmail1">App Logo</label>
                                                 <input type="file" class="form-control" name="app_logo"
                                                     accept="image/png, image/jpg, image/jpeg">
