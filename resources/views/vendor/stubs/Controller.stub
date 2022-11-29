@@ -88,10 +88,10 @@ class {{modelName}}Controller extends Controller
      * @param  {{modelName}} ${{modelNameLowerCase}}
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, {{modelName}} ${{modelNameLowerCase}})
+    public function update(Request $request,$id)
     {
         request()->validate({{modelName}}::$rules);
-
+        ${{modelNameLowerCase}} = {{modelName}}::find($id);
         ${{modelNameLowerCase}}->update($request->all());
 
         return redirect()->route('{{modelRoute}}.index')
