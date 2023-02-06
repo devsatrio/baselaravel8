@@ -51,8 +51,13 @@ class {{modelName}}Controller extends Controller
 
         ${{modelNameLowerCase}} = {{modelName}}::create($request->all());
 
-        return redirect()->route('{{modelRoute}}.index')
-            ->with('success', '{{modelName}} created successfully.');
+        if($request->action=='save_and_close'){
+            return redirect()->route('{{modelRoute}}.index')
+                ->with('success', '{{modelName}} created successfully.');
+        }else{
+            return redirect()->route('{{modelRoute}}.create')
+                ->with('success', '{{modelName}} created successfully.');
+        }
     }
 
     /**

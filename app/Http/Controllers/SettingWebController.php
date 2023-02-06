@@ -50,6 +50,7 @@ class SettingWebController extends Controller
                 'logo_bg_color'=>$request->brand_logo_bg_color,
                 'navbar_type'=>$request->navbar_type,
                 'brand_type'=>$request->brand_type,
+                'sidebar_mode'=>$request->sidebar_mode,
             ]);
         }else{
             DB::table('setting_web')
@@ -62,6 +63,7 @@ class SettingWebController extends Controller
                 'logo_bg_color'=>$request->brand_logo_bg_color,
                 'navbar_type'=>$request->navbar_type,
                 'brand_type'=>$request->brand_type,
+                'sidebar_mode'=>$request->sidebar_mode,
             ]);
         }
         return redirect('setting-web')->with('status','Setting saved');

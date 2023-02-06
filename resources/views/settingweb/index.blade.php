@@ -68,6 +68,16 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label for="exampleInputEmail1">Sidebar Mode</label>
+                                                <select name="sidebar_mode" class="form-control">
+                                                    <option value="">default</option>
+                                                    <option value="sidebar-collapse"
+                                                        @if ($row->sidebar_mode == 'sidebar-collapse') selected @endif>sidebar-collapse</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
                                                 <label for="exampleInputEmail1">Navbar Color</label>
                                                 <select name="navbar_color" class="form-control">
                                                     <option class="bg-primary" value="primary"

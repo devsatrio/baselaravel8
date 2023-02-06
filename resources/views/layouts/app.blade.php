@@ -16,7 +16,7 @@ $data_setting_web = DB::table('setting_web')->orderby('id','desc')->limit(1)->ge
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     @stack('cs_in')
 </head>
-<body class="hold-transition sidebar-mini sidebar-collapse">
+<body class="hold-transition sidebar-mini @foreach($data_setting_web as $row_data_setting_web) {{$row_data_setting_web->sidebar_mode}} @endforeach">
     <div class="wrapper">
         <nav class="main-header navbar navbar-expand @foreach($data_setting_web as $row_data_setting_web) navbar-{{$row_data_setting_web->navbar_color}} @endforeach @foreach($data_setting_web as $row_data_setting_web) navbar-{{$row_data_setting_web->navbar_type}} @endforeach">
             <ul class="navbar-nav">
